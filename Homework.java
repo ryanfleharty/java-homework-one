@@ -15,11 +15,24 @@ public class Homework {
 			19
 		};
 
+		int[] mergedArrayTest = {
+			22,
+			45,
+			67,
+			34,
+			112,
+			567,
+			4
+		};
+
 		int[] bubbleTest = bubbleSort(arrayTest);
 		System.out.println(Arrays.toString(bubbleTest));
 
 		int[] insertionTest = insertionSort(arrayTest);
 		System.out.println(Arrays.toString(insertionTest));
+
+		int[] mergedSortTest = mergedSortedArray(arrayTest, mergedArrayTest);
+		System.out.println(Arrays.toString(mergedSortTest));
 	}
 
 	public static int[] bubbleSort(int[] arr) {
@@ -50,5 +63,16 @@ public class Homework {
 			arr[smallArrayIndex + 1] = arr[i]; 
 		}
 		return arr;
+	}
+
+	public static int[] mergedSortedArray(int[] arr1, int[] arr2) {
+		int[] mergedArray = new int[arr1.length + arr2.length];
+		for (int i = 0; i < arr1.length; i++) {
+			mergedArray[i] = arr1[i];
+		}
+		for (int k = 0; k < arr2.length; k++) {
+			mergedArray[mergedArray.length - 1 - k] = arr2[k];
+		}
+		return bubbleSort(mergedArray);
 	}
 }
